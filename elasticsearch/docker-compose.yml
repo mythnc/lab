@@ -1,5 +1,14 @@
 version: '2.2'
 services:
+  cerebro:
+    image: lmenezes/cerebro:0.9.3
+    container_name: cerebro
+    ports:
+      - "9000:9000"
+    command:
+      - -Dhosts.0.host=http://es01:9200
+    networks:
+      - elastic
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
     container_name: es01
@@ -66,11 +75,18 @@ services:
   kib01:
     image: docker.elastic.co/kibana/kibana:7.10.1
     container_name: kib01
+    depends_on:
+      - es01
+      - es02
+      - es03
     ports:
       - 5601:5601
     environment:
-      ELASTICSEARCH_URL: http://es01:9200
-      ELASTICSEARCH_HOSTS: http://es01:9200
+      - ELASTICSEARCH_URL=http://es01:9200
+      - ELASTICSEARCH_HOSTS=http://es01:9200
+      - XPACK_GRAPH_ENABLED=true
+      - TIMELION_ENABLED=true
+      - XPACK_MONITORING_COLLECTION_ENABLED="true"
     networks:
       - elastic
 
