@@ -1,3 +1,5 @@
+-- exercise 4.3 and 4.4
+
 local function insert(dest_str, index, target_str)
   if index < 1 then
     return dest_str
