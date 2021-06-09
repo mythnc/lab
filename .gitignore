@@ -1,2 +1,5 @@
 elasticsearch/geektime-ELK/
 elasticsearch/logstash-7.10.1/
+
+# Java
+*.class
