@@ -3,3 +3,6 @@ elasticsearch/logstash-7.10.1/
 
 # Java
 *.class
+
+# Python
+config.py
