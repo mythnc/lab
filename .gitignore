@@ -6,3 +6,4 @@ elasticsearch/logstash-7.10.1/
 
 # Python
 config.py
+python/auto_time_card/client.py
