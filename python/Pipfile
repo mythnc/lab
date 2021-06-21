@@ -8,9 +8,14 @@ pylint = "*"
 ipython = "*"
 rope = "*"
 pytest = "*"
+black = "*"
 
 [requires]
 python_version = "3.8"
 
 [packages]
 pytz = "*"
+selenium = "*"
+
+[pipenv]
+allow_prereleases = true
