@@ -23,3 +23,20 @@ class Solution:
             node = next_node
         node.next = pre_node
         return node
+
+    # recursive
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if head is None:
+            return head
+        result = self.reverse(head, head.next)
+        head.next = None
+        return result
+
+
+    def reverse(self, previous_node, current_node) -> Optional[ListNode]:
+        if current_node is None:
+            return previous_node
+        next_node = current_node.next
+        current_node.next = previous_node
+        return self.reverse(current_node, next_node)
+

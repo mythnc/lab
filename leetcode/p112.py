@@ -30,3 +30,28 @@ class Solution:
         
         if node.left is None and node.right is None:
             self.sum.append(sum(path))
+
+class Solution:
+    def hasPathSum(self, root: TreeNode, targetSum: int) -> bool:
+        if root is None:
+            return False
+
+        return self.traverse(root, targetSum)
+
+    def traverse(self, root, targetSum, sum_=None):
+        if sum_ is None:
+            sum_ = root.val
+        else:
+            sum_ += root.val
+
+        if root.left is None and root.right is None:
+            return sum_ == targetSum
+
+        if root.left is None:
+            return self.traverse(root.right, targetSum, sum_)
+
+        if root.right is None:
+            return self.traverse(root.left, targetSum, sum_)
+
+        return (self.traverse(root.left, targetSum, sum_)
+            or self.traverse(root.right, targetSum, sum_))

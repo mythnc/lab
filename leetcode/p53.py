@@ -27,3 +27,4 @@ class SolutionSlow:
 print(Solution().maxSubArray([-2,1,-3,4,-1,2,1,-5,4])) # 6
 print(Solution().maxSubArray([1])) # 1
 print(Solution().maxSubArray([5,4,-1,7,8])) # 23
+print(Solution().maxSubArray([2,-1,3])) # 4
