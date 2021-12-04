@@ -18,6 +18,7 @@ pytz = "*"
 selenium = "*"
 websockets = "*"
 celery = "*"
+pyside6 = "*"
 
 [pipenv]
 allow_prereleases = true
