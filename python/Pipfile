@@ -19,6 +19,7 @@ selenium = "*"
 websockets = "*"
 celery = "*"
 pyside6 = "*"
+scrapy = "*"
 
 [pipenv]
 allow_prereleases = true
