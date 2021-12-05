@@ -5,42 +5,34 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def rob(self, root: Optional[TreeNode]) -> int:
-        self.map_ = {}
-        return self.dp(root, 1)
+    map_ = {}
 
-    def dp(self, root, index):
-        if index in self.map_:
-            return self.map_[index]
+    def rob(self, root: Optional[TreeNode]) -> int:
+        if root in self.map_:
+            return self.map_[root]
 
         if root is None:
             return 0
 
         # cond1: no self + children
-        left_node_index = index * 2
-        right_node_index = index * 2 + 1
-        self.map_[left_node_index] = self.dp(root.left, left_node_index)
-        self.map_[right_node_index] = self.dp(root.right, right_node_index)
-        cond1_sum = self.map_[left_node_index] + self.map_[right_node_index]
+        cond1_sum = 0
+        if (left_node := root.left) is not None:
+            self.map_[left_node] = self.rob(left_node)
+            cond1_sum += self.map_[left_node]
+        if (right_node := root.right) is not None:
+            self.map_[right_node] = self.rob(right_node)
+            cond1_sum += self.map_[right_node]
 
         # cond2: self + grandchildren
         cond2_sum = root.val
-        if (left_node := root.left) is not None:
-            left_node_index_in_left_node = left_node_index * 2
-            self.map_[left_node_index_in_left_node] = self.dp(left_node.left, left_node_index_in_left_node)
+        if left_node is not None:
+            self.map_[left_node.left] = self.rob(left_node.left)
+            self.map_[left_node.right] = self.rob(left_node.right)
+            cond2_sum += self.map_[left_node.left] + self.map_[left_node.right]
 
-            right_node_index_in_left_node = left_node_index * 2 + 1
-            self.map_[right_node_index_in_left_node] = self.dp(left_node.right, right_node_index_in_left_node)
-
-            cond2_sum += self.map_[left_node_index_in_left_node] + self.map_[right_node_index_in_left_node]
-
-        if (right_node := root.right) is not None:
-            left_node_index_in_right_node = right_node_index * 2
-            self.map_[left_node_index_in_right_node] = self.dp(right_node.left, left_node_index_in_right_node)
-
-            right_node_index_in_right_node = right_node_index * 2 + 1
-            self.map_[right_node_index_in_right_node] = self.dp(right_node.right, right_node_index_in_right_node)
-
-            cond2_sum += self.map_[left_node_index_in_right_node] + self.map_[right_node_index_in_right_node]
+        if right_node is not None:
+            self.map_[right_node.left] = self.rob(right_node.left)
+            self.map_[right_node.right] = self.rob(right_node.right)
+            cond2_sum += self.map_[right_node.left] + self.map_[right_node.right]
 
         return max(cond1_sum, cond2_sum)
