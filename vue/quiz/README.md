@@ -1,5 +1,7 @@
 # quiz
 
+https://mythnc.github.io/lab/vue/quiz/dist/index.html
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
