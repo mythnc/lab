@@ -1,17 +1,13 @@
 <template>
   <!-- Auth Modal -->
-  <div class="fixed z-10 inset-0 overflow-y-auto hidden" id="modal">
-    <div
-      class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
-    >
+  <div class="fixed z-10 inset-0 overflow-y-auto" id="modal" :class="hiddenClass">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
       <div class="fixed inset-0 transition-opacity">
         <div class="absolute inset-0 bg-gray-800 opacity-75"></div>
       </div>
 
       <!-- This element is to trick the browser into centering the modal contents. -->
-      <span class="hidden sm:inline-block sm:align-middle sm:h-screen"
-        >&#8203;</span
-      >
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
 
       <div
         class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
@@ -30,16 +26,10 @@
           <!-- Tabs -->
           <ul class="flex flex-wrap mb-4">
             <li class="flex-auto text-center">
-              <a
-                class="block rounded py-3 px-4 transition hover:text-white text-white bg-blue-600"
-                href="#"
-                >Login</a
-              >
+              <a class="block rounded py-3 px-4 transition hover:text-white text-white bg-blue-600" href="#">Login</a>
             </li>
             <li class="flex-auto text-center">
-              <a class="block rounded py-3 px-4 transition" href="#"
-                >Register</a
-              >
+              <a class="block rounded py-3 px-4 transition" href="#">Register</a>
             </li>
           </ul>
 
@@ -129,10 +119,7 @@
             </div>
             <!-- TOS -->
             <div class="mb-3 pl-6">
-              <input
-                type="checkbox"
-                class="w-4 h-4 float-left -ml-6 mt-1 rounded"
-              />
+              <input type="checkbox" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
               <label class="inline-block">Accept terms of service</label>
             </div>
             <button
@@ -149,7 +136,13 @@
 </template>
 
 <script>
+import { mapState } from "pinia";
+import useModalStore from "@/stores/modal";
+
 export default {
   name: "AppAuth",
+  computed: {
+    ...mapState(useModalStore, ["hiddenClass"]),
+  },
 };
 </script>
