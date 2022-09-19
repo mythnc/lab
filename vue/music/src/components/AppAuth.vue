@@ -73,7 +73,12 @@
             </button>
           </form>
           <!-- Registration Form -->
-          <vee-form v-show="this.tab === 'register'" :validation-schema="schema" @submit="register">
+          <vee-form
+            v-show="this.tab === 'register'"
+            :validation-schema="schema"
+            @submit="register"
+            :initial-values="userData"
+          >
             <!-- Name -->
             <div class="mb-3">
               <label class="inline-block mb-2">Name</label>
@@ -114,7 +119,7 @@
                   type="password"
                   class="block w-full py-1.5 px-3 text-gray-800 border border-gray-300 transition duration-500 focus:outline-none focus:border-black rounded"
                   placeholder="Password"
-                  v-bind="field"
+                  :="field"
                 />
                 <div class="text-red-600" v-for="error in errors" :key="error">{{ error }}</div>
               </vee-field>
@@ -181,6 +186,9 @@ export default {
         confirm_password: "confirmed:@password",
         country: "required|excluded:Unknown",
         tos: "required",
+      },
+      userData: {
+        country: "USA",
       },
     };
   },
