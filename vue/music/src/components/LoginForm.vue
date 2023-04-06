@@ -1,6 +1,10 @@
 <template>
   <!-- Login Form -->
-  <div class="text-white text-center font-bold p-4 rounded mb-4" v-if="login_show_alert" :class="login_alert_variant">
+  <div
+    v-if="login_show_alert"
+    class="text-white text-center font-bold p-4 rounded mb-4"
+    :class="login_alert_variant"
+  >
     {{ login_alert_msg }}
   </div>
   <vee-form :validation-schema="loginSchema" @submit="login">

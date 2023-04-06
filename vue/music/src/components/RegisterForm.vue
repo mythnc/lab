@@ -1,9 +1,17 @@
 <template>
   <!-- Registration Form -->
-  <div class="text-white text-center font-bold p-4 rounded mb-4" v-if="reg_show_alert" :class="reg_alert_variant">
+  <div
+    v-if="reg_show_alert"
+    class="text-white text-center font-bold p-4 rounded mb-4"
+    :class="reg_alert_variant"
+  >
     {{ reg_alert_msg }}
   </div>
-  <vee-form :validation-schema="schema" @submit="register" :initial-values="userData">
+  <vee-form
+    :validation-schema="schema"
+    :initial-values="userData"
+    @submit="register"
+  >
     <!-- Name -->
     <div class="mb-3">
       <label class="inline-block mb-2">Name</label>
@@ -46,7 +54,7 @@
           placeholder="Password"
           :="field"
         />
-        <div class="text-red-600" v-for="error in errors" :key="error">
+        <div v-for="error in errors" :key="error" class="text-red-600">
           {{ error }}
         </div>
       </vee-field>
@@ -79,7 +87,12 @@
     </div>
     <!-- TOS -->
     <div class="mb-3 pl-6">
-      <vee-field type="checkbox" name="tos" value="1" class="w-4 h-4 float-left -ml-6 mt-1 rounded" />
+      <vee-field
+        type="checkbox"
+        name="tos"
+        value="1"
+        class="w-4 h-4 float-left -ml-6 mt-1 rounded"
+      />
       <label class="inline-block">Accept terms of service</label>
       <ErrorMessage class="text-red-600 block" name="tos" />
     </div>
@@ -125,7 +138,9 @@ export default {
       this.reg_alert_variant = "bg-blue-500";
       this.reg_alert_msg = "Please wait! Your account is being created.";
 
-      const userCred = await firebase.auth().createUserWithEmailAndPassword(values.email, values.password);
+      const userCred = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(values.email, values.password);
 
       this.reg_alert_variant = "bg-green-500";
       this.reg_alert_msg = "Success! Your account has been created.";
