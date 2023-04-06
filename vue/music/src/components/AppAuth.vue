@@ -9,7 +9,7 @@
       class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
     >
       <div class="fixed inset-0 transition-opacity">
-        <div class="absolute inset-0 bg-gray-800 opacity-75"></div>
+        <div class="absolute inset-0 bg-gray-800 opacity-75" />
       </div>
 
       <!-- This element is to trick the browser into centering the modal contents. -->
@@ -27,7 +27,7 @@
             <p class="text-2xl font-bold">Your Account</p>
             <!-- Modal Close Button -->
             <div class="modal-close cursor-pointer z-50" @click="closeModal">
-              <i class="fas fa-times"></i>
+              <i class="fas fa-times" />
             </div>
           </div>
 
@@ -64,7 +64,9 @@
 
 <script>
 import { mapState, mapWritableState } from "pinia";
+
 import useModalStore from "@/stores/modal";
+
 import AppLoginForm from "./LoginForm.vue";
 import AppRegisterForm from "./RegisterForm.vue";
 
