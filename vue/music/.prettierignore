@@ -1,0 +1,4 @@
+.prettierrc
+src/assets/
+template/
+pnpm-lock.yaml
