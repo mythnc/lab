@@ -176,3 +176,13 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  name: "Manage",
+  beforeRouteEnter(to, from, next) {
+    console.log("In-Component Guards");
+    next();
+  },
+};
+</script>
