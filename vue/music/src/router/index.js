@@ -36,4 +36,9 @@ const router = createRouter({
   linkExactActiveClass: "text-yellow-500",
 });
 
+router.beforeEach(async (to, from, next) => {
+  console.log(to, from);
+  next();
+});
+
 export default router;
