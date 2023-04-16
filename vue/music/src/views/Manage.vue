@@ -178,11 +178,17 @@
 </template>
 
 <script>
+import useUserStore from "@/stores/user";
+
 export default {
   name: "Manage",
   beforeRouteEnter(to, from, next) {
-    console.log("In-Component Guards");
-    next();
+    const store = useUserStore();
+    if (store.userLoggedIn) {
+      next();
+    } else {
+      next({ name: "home" });
+    }
   },
 };
 </script>
