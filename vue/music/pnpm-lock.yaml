@@ -2,26 +2,26 @@ lockfileVersion: 5.4
 
 specifiers:
   '@vee-validate/rules': ^4.6.7
-  '@vitejs/plugin-vue': ^3.0.3
+  '@vitejs/plugin-vue': ^3.1.0
   '@vue/test-utils': ^2.0.2
   autoprefixer: ^10.4.8
   cypress: ^10.7.0
-  eslint: ^8.22.0
-  eslint-config-prettier: 7.2.0
+  eslint: ^8.23.0
+  eslint-config-prettier: ^7.2.0
   eslint-plugin-cypress: ^2.12.1
   eslint-plugin-simple-import-sort: ^10.0.0
-  eslint-plugin-vue: ^9.3.0
-  firebase: '8'
+  eslint-plugin-vue: ^9.4.0
+  firebase: ^8.10.1
   jsdom: ^20.0.0
-  pinia: ^2.0.21
+  pinia: ^2.0.22
   postcss: ^8.4.16
   prettier: ^2.7.1
   start-server-and-test: ^1.14.0
   tailwindcss: ^3.1.8
   vee-validate: ^4.6.7
-  vite: ^3.0.9
-  vitest: ^0.23.0
-  vue: ^3.2.38
+  vite: ^3.1.0
+  vitest: ^0.23.2
+  vue: ^3.2.39
   vue-router: ^4.1.5
 
 dependencies:
@@ -894,7 +894,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.3
-      caniuse-lite: 1.0.30001393
+      caniuse-lite: 1.0.30001478
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -972,7 +972,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001393
+      caniuse-lite: 1.0.30001478
       electron-to-chromium: 1.4.247
       node-releases: 2.0.6
       update-browserslist-db: 1.0.7_browserslist@4.21.3
@@ -1004,8 +1004,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /caniuse-lite/1.0.30001393:
-    resolution: {integrity: sha512-N/od11RX+Gsk+1qY/jbPa0R6zJupEa0lxeBG598EbrtblxVCTJsQwbRBm6+V+rxpc5lHKdsXb9RY83cZIPLseA==}
+  /caniuse-lite/1.0.30001478:
+    resolution: {integrity: sha512-gMhDyXGItTHipJj2ApIvR+iVB5hd0KP3svMWWXDvZOmjzJJassGLMfxRkQCSYgGd2gtdL/ReeiyvMSFD1Ss6Mw==}
     dev: true
 
   /caseless/0.12.0:
