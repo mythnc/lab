@@ -21,32 +21,15 @@
       </div>
       <hr class="my-6" />
       <!-- Progess Bars -->
-      <div class="mb-4">
+      <div v-for="upload in uploads" :key="upload.name" class="mb-4">
         <!-- File Name -->
-        <div class="font-bold text-sm">Just another song.mp3</div>
+        <div class="font-bold text-sm">{{ upload.name }}</div>
         <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
           <!-- Inner Progress Bar -->
           <div
             class="transition-all progress-bar bg-blue-400"
-            style="width: 75%"
-          ></div>
-        </div>
-      </div>
-      <div class="mb-4">
-        <div class="font-bold text-sm">Just another song.mp3</div>
-        <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
-          <div
-            class="transition-all progress-bar bg-blue-400"
-            style="width: 35%"
-          ></div>
-        </div>
-      </div>
-      <div class="mb-4">
-        <div class="font-bold text-sm">Just another song.mp3</div>
-        <div class="flex h-4 overflow-hidden bg-gray-200 rounded">
-          <div
-            class="transition-all progress-bar bg-blue-400"
-            style="width: 55%"
+            :class="'bg-blue-400'"
+            :style="{ width: upload.current_progress + '%' }"
           ></div>
         </div>
       </div>
@@ -62,6 +45,7 @@ export default {
   data() {
     return {
       is_dragover: false,
+      uploads: [],
     };
   },
   methods: {
@@ -76,7 +60,18 @@ export default {
 
         const storageRef = storage.ref(); // storage.url
         const songRef = storageRef.child(`songs/${file.name}`); // storage.url/songs/music.mp3
-        songRef.put(file);
+        const task = songRef.put(file);
+
+        this.uploads.push({
+          task,
+          current_progress: 0,
+          name: file.name,
+        });
+
+        task.on("state_changed", (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        });
       });
       console.log(files);
     },
