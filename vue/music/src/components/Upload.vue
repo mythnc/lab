@@ -52,12 +52,17 @@ export default {
       uploads: [],
     };
   },
-  beforeUnmount() {
-    this.uploads.forEach((upload) => {
-      upload.task.cancel();
-    });
-  },
+  // beforeUnmount() {
+  //   this.uploads.forEach((upload) => {
+  //     upload.task.cancel();
+  //   });
+  // },
   methods: {
+    cancelUploads() {
+      this.uploads.forEach((upload) => {
+        upload.task.cancel();
+      });
+    },
     upload($event) {
       this.is_dragover = false;
       const files = $event.dataTransfer
