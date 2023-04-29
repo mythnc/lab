@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import useUserStore from "@/stores/user";
 import About from "@/views/AboutView.vue";
 import Home from "@/views/HomeView.vue";
-import Manage from "@/views/Manage.vue";
+import Manage from "@/views/ManageView.vue";
 
 const routes = [
   {

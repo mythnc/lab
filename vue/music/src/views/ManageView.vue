@@ -39,7 +39,7 @@ import AppUpload from "@/components/Upload.vue";
 import { auth, songsCollection } from "@/includes/firebase";
 
 export default {
-  name: "Manage",
+  name: "ManageView",
   components: {
     AppUpload,
     CompositionItem,
